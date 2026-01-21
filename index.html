@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Soul Morph — official website</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#7dd3fc;
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background:linear-gradient(180deg,#071029 0%, #07162b 60%);
+      color:#e6eef8;
+      line-height:1.45;
+    }
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .mark{
+      width:56px;height:56px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#60a5fa);
+      display:flex;align-items:center;justify-content:center;
+      font-weight:800;color:#04263a
+    }
+    h1{font-size:28px;margin:0}
+    nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-weight:600}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:40px 0}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      padding:28px;border-radius:var(--radius);
+      box-shadow:0 6px 30px rgba(2,6,23,0.6)
+    }
+    .hero h2{font-size:38px;margin:0 0 8px}
+    .lead{color:var(--muted);margin-bottom:18px}
+
+    .notice{
+      margin:16px 0;
+      padding:12px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      font-size:14px;
+      color:var(--muted)
+    }
+
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      background:var(--accent);color:#04263a;
+      padding:12px 18px;border-radius:10px;
+      font-weight:700;text-decoration:none
+    }
+    .btn.ghost{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted)
+    }
+    .meta{display:flex;gap:8px;color:var(--muted);margin-top:12px;font-size:14px}
+
+    /* FEATURES */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+    .card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .card h3{margin:0 0 8px;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+
+    /* GALLERY */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+    .thumb{
+      height:140px;
+      background:linear-gradient(90deg,#0b1220,#0f1a2a);
+      display:flex;align-items:center;justify-content:center;
+      border-radius:10px;color:var(--muted);cursor:pointer;
+      padding:8px;text-align:center;
+    }
+
+    /* ABOUT */
+    .about{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:28px}
+    .contact{background:var(--glass);padding:14px;border-radius:12px}
+
+    footer{margin:40px 0 80px;color:var(--muted);text-align:center}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .features{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .about{grid-template-columns:1fr}
+    }
+    @media (max-width:520px){
+      nav{display:none}
+      .gallery{grid-template-columns:1fr}
+    }
+
+    /* MODAL */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.7);z-index:40}
+    .modal.show{display:flex}
+    .modal-inner{background:#08111b;padding:12px;border-radius:10px;position:relative;max-width:95%;width:calc(100% - 40px)}
+    .modal img{max-width:100%;max-height:80vh;border-radius:6px;display:block;margin:0 auto}
+    .modal-caption{color:var(--muted);font-size:13px;margin-top:8px;text-align:center}
+    .modal-close{
+      position:absolute;top:8px;right:8px;background:transparent;border:0;color:var(--muted);
+      font-size:18px;padding:6px;border-radius:6px;cursor:pointer
+    }
+    .modal-close:focus{outline:2px solid var(--accent)}
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div class="logo">
+    <div class="mark">SM</div>
+    <div>
+      <h1>Soul Morph</h1>
+      <div style="color:var(--muted);font-size:13px">RPG by Nikita Kalinichenko</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#about">About game</a>
+    <a href="#features">Features</a>
+    <a href="#gallery">Screenshots</a>
+    <a href="#contact">Contacts</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-card">
+    <h2>Feel the spirit of adventure, where every step you take will change the story.</h2>
+
+    <p class="lead">
+      Soul Morph — is a roleplay game in 3D anime style. Travel, fight enemies, craft things, find allies and pets
+      and discover world's secrets. You can choose what you want to do and refuse
+      for things you don't like.
+    </p>
+
+    <div class="notice">
+      ⚠️ <strong>Development status:</strong> The game is still in development.
+      Concept / Early stage — this page showcases ideas, designs and plans for Soul Morph. I’m working on prototypes and will share updates here.
+    </div>
+
+    <div class="cta">
+      <a class="btn" href="#gallery">Screenshots</a>
+      <a class="btn ghost" href="#about">Details</a>
+    </div>
+
+    <div class="meta">
+      <div>Genre: RPG in 3D anime style</div>
+      <div>|</div>
+      <div>Platform (future): app / website</div>
+    </div>
+
+    <div style="margin-top:20px;color:var(--muted);font-size:14px">
+      <strong>Short:</strong> Classic roleplay system, Blender 3D editor, 3D anime style, Unreal engine
+      crafting system, metamorphose, choice of different characters (looks),
+      character customization and upgrades.
+    </div>
+  </div>
+
+  <aside>
+    <div class="card">
+      <div style="height:220px;border-radius:10px;background:#0b2b45;display:flex;align-items:center;justify-content:center;color:var(--muted)">
+        Trailer / GIF
+      </div>
+      <div style="margin-top:10px;display:flex;gap:8px">
+        <a class="btn" href="https://creater1707.github.io/Soul-Morph.backstories">Some backstories</a>
+        <a class="btn ghost" href="#" onclick="alert('Discord link will be added later')">Contact</a>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<section id="features">
+  <h3>Features</h3>
+  <div class="features">
+    <div class="card">
+      <h3>🎮 Gameplay</h3>
+      <p>Classic and unusual quests, dialogue system and choices that affect the world.</p>
+    </div>
+    <div class="card">
+      <h3>⚔️ Fights</h3>
+      <p>Turn-based or real-time combat — strategy is important.</p>
+    </div>
+    <div class="card">
+      <h3>🛠️ Craft</h3>
+      <p>Collect resources and create tools and armor with unique properties.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h3>Screenshots / Concepts</h3>
+  <div class="gallery">
+    <div class="thumb" data-img="IMG_0004.jpeg">Screenshot 1</div>
+    <div class="thumb" data-img="IMG_0005.jpeg">Screenshot 2</div>
+    <div class="thumb" data-img="IMG_0006.jpeg">Screenshot 3</div>
+    <div class="thumb" data-img="IMG_0007.jpeg">Screenshot 4</div>
+    <div class="thumb" data-img="IMG_0008.webp">Screenshot 5</div>
+    <div class="thumb" data-img="IMG_0009.webp">Screenshot 6</div>
+    <div class="thumb" data-img="https://via.placeholder.com/1200x700">Screenshot 7</div>
+    <div class="thumb" data-img="https://via.placeholder.com/1200x700">Screenshot 8</div>
+    <div class="thumb" data-img="https://via.placeholder.com/1200x700">Screenshot 9</div>
+    <div class="thumb" data-img="https://via.placeholder.com/1200x700">Screenshot 10</div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div>
+    <h3>About game</h3>
+    <p>
+      Soul Morph is a project created with love to the genre. There'll be 10 characters, each
+      recieves unique ability and path. You are able to choose the sequence of path completion. So you won't miss anything!
+      The player explores a world full of dangers and secrets,
+      finds allies and fights enemies while leveling up the hero.
+    </p>
+  </div>
+
+  <aside class="contact" id="contact">
+    <h4>About author</h4>
+    <p style="color:var(--muted)">
+      Hi! I'm Nikita, 15 years old indie developer. I make this game alone,
+      learn programming and game design. I also like playnig chess. Let's play a game if you're also a chess fan!
+    </p>
+    <p style="font-size:14px;color:var(--muted)">
+      Email: <span style="color:var(--accent)">ua1707mini@gmail.com</span>
+    </p>
+    <p style="font-size:14px;color:var(--muted)">
+      chess.com profile: <span style="color:var(--accent)">https://www.chess.com/member/nikitosik_ua</span>
+    </p>
+  </aside>
+</section>
+<footer>
+  © Soul Morph — indie project
+</footer>
+
+</div>
+
+<div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-inner" role="document">
+    <button class="modal-close" id="modal-close" aria-label="Close preview">✕</button>
+    <img id="modal-img" src="" alt="">
+    <div class="modal-caption" id="modal-caption"></div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalCaption = document.getElementById('modal-caption');
+    const modalClose = document.getElementById('modal-close');
+    const thumbs = document.querySelectorAll('.thumb');
+    const backstoriesBtn = document.getElementById('backstories-btn');
+
+    function openModal(src, title){
+      modalImg.src = src;
+      modalImg.alt = title || src;
+      modalCaption.textContent = title || '';
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden'; // prevent background scroll
+      modalClose.focus();
+    }
+
+    function closeModal(){
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden','true');
+      modalImg.src = '';
+      modalCaption.textContent = '';
+      document.body.style.overflow = '';
+    }
+
+    thumbs.forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const src = el.dataset.img;
+        // prefer explicit data-title, otherwise use inner text or filename
+        const title = el.dataset.title || el.textContent.trim() || src;
+        openModal(src, title);
+      });
+      // make thumbs keyboard accessible
+      el.tabIndex = 0;
+      el.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          el.click();
+        }
+      });
+    });
+
+    // close when clicking on backdrop (but not when clicking inside modal-inner)
+    modal.addEventListener('click', (e)=>{
+      if(e.target === modal) closeModal();
+    });
+    modalClose.addEventListener('click', closeModal);
+
+    // close on Escape
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && modal.classList.contains('show')) {
+        closeModal();
+      }
+    });
+
+    // Backstories redirect module: uses data-href or href as fallback
+    if(backstoriesBtn){
+      backstoriesBtn.addEventListener('click', (e)=>{
+        const target = backstoriesBtn.dataset.href || backstoriesBtn.getAttribute('href') || 'backstories.html';
+        // prevent default to use controlled redirect (so you can run animations, analytics, etc.)
+        e.preventDefault();
+        // small delay could be added here for animation; currently immediate redirect
+        window.location.href = target;
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
