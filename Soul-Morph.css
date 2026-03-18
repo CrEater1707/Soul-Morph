@@ -84,3 +84,11 @@
         object-fit:cover;
         display:block;
     }
+    table{
+        border-collapse:collapse;
+        margin:auto;
+    }
+
+    th, td{
+        padding:6px 10px;
+    }
